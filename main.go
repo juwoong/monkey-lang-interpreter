@@ -1,7 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"monkey/repr"
+	"os"
+	"os/user"
+)
 
 func main() {
-	fmt.Println("Hello World!")
+	usr, err := user.Current()
+
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("Hello %s!\n", usr.Name)
+	repr.Start(os.Stdin, os.Stdout)
 }
